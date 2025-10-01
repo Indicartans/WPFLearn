@@ -6,68 +6,23 @@
         xmlns:local="clr-namespace:WPFLearn"
         xmlns:userControls="clr-namespace:WPFLearn.View.UserControls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="400">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="15*"/>
-            <RowDefinition Height="75*"/>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="80*"/>
         </Grid.RowDefinitions>
 
-        <userControls:MenuBar/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20*"/>
-                <ColumnDefinition Width="60*"/>
-                <ColumnDefinition Width="20*"/>
-            </Grid.ColumnDefinitions>
+        <TextBox Name="lvInput" Height="40" VerticalContentAlignment="Center" Margin="5"/>
+        <Button Name="btnAddItem" Grid.Column="1" Width="50" Height="40" Content="Add" Click="btnAddItem_Click" HorizontalAlignment="Left"/>
+        <Button Grid.Column="1" Name="btnDelete" Width="50" Height="40" Content="Delete" Click="btnDelete_Click" Margin="60,0,0,0" HorizontalAlignment="Left"/>
+        <Button Grid.Column="1" Name="btnClear" Width="50" Height="40" Content="Clear" Click="btnClear_Click" Margin="120,0,0,0" HorizontalAlignment="Left"/>
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-
-                <TextBox Name="txtInput" 
-                         VerticalContentAlignment="Center" 
-                         Width="150" Height="20" 
-                         FontSize="16" 
-                         Text="{Binding BoundText, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"/>
-                <Button Name="btnSet" Grid.Row="1" Width="150" Height="30" Content="Set" Click="btnSet_Click"/>
-                <TextBlock Grid.Row="2" FontSize="16" Text="{Binding BoundText}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            </Grid>
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-
-                <userControls:ClearableTextBox Placeholder="Name" Width="250" Height="40" HorizontalAlignment="Left"/> 
-                <userControls:ClearableTextBox Grid.Row="1" Placeholder="Email" Width="250" Height="40" HorizontalAlignment="Left"/> 
-                <userControls:ClearableTextBox Grid.Row="2" Placeholder="Phone" Width="250" Height="40" HorizontalAlignment="Left"/> 
-            </Grid>
-
-            <Grid Grid.Column="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-
-                <Button Name="btnFire" Width="50" Height="25" Content="Fire" Click="btnFire_Click"/>
-                <TextBlock Name="tbInfo" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="16"/>
-
-                <Button Grid.Row="1" Name="btnOpenFile" Content="Open File" Width="60" Height="30" Click="btnOpenFile_Click"/>
-                <TextBlock Grid.Row="1" Name="tbFilePath" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="12"/>
-
-                <Button Grid.Row="2" Name="btnOpenFolder" Content="Open Folder" Width="80" Height="30" Click="btnOpenFolder_Click"/>
-                <TextBlock Grid.Row="2" Name="tbFolderPath" FontSize="12" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-            </Grid>
-            
-        </Grid>
-
+        <ListView Name="lvEntries" Grid.Row="1" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

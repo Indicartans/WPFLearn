@@ -1,91 +1,44 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using System.Collections;
 using System.Windows;
-using Winforms = System.Windows.Forms;
 
 namespace WPFLearn
 {
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : Window
     {
         public MainWindow()
         {
-            DataContext = this;
             InitializeComponent();
+            lvEntries.Items.Add("Item 1");
+            lvEntries.Items.Add("Item 2");
+            lvEntries.Items.Add("Item 3");
         }
 
-        private string boundText = string.Empty;
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        public string BoundText
+        private void btnAddItem_Click(object sender, RoutedEventArgs e)
         {
-            get { return boundText; }
-            set 
-            { 
-                boundText = value; 
-                OnPropertyChanged("BoundText");
-            }
+            lvEntries.Items.Add(lvInput.Text);
+            lvInput.Clear();
         }
 
-        private void btnSet_Click(object sender, RoutedEventArgs e)
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            BoundText = "Text set from code behind.";
-        }
+            //int index = lvEntries.SelectedIndex;
+            //object item = lvEntries.SelectedItem;
+            var items = lvEntries.SelectedItems;
 
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        private void btnFire_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult result = System.Windows.MessageBox.Show("Do you agree?", "Agreement", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-            if (result == MessageBoxResult.Yes) {
-                tbInfo.Text = "Agreed";
-            } else
+            var result = System.Windows.MessageBox.Show($"Are you sure to delete '{items.Count}' item(s)?", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if( result == MessageBoxResult.Yes)
             {
-                tbInfo.Text = "Not agreed";
+                var itemsList = new ArrayList(items);
+                foreach(var item in itemsList)
+                {
+                    lvEntries.Items.Remove(item);
+                }
             }
         }
 
-        private void btnOpenFile_Click(object sender, RoutedEventArgs e)
+        private void btnClear_Click(object sender, RoutedEventArgs e)
         {
-            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
-            openFileDialog.Filter = "C3 source file | *.cs";
-            openFileDialog.Title = "Select a C# source file";
-            //openFileDialog.InitialDirectory = "D:\\go";
-            openFileDialog.Multiselect = true;
-
-            bool? success = openFileDialog.ShowDialog();
-
-            if(success ==  true)
-            {
-                // Get the selected file path
-                string[] filePaths = openFileDialog.FileNames;
-                // get only the file name
-                string[] fileNames = openFileDialog.SafeFileNames;
-
-                //tbFilePath.Text = fileNames;
-            }
-        }
-
-        private void btnOpenFolder_Click(object sender, RoutedEventArgs e)
-        {
-            Winforms.FolderBrowserDialog dialog = new Winforms.FolderBrowserDialog();
-            dialog.InitialDirectory = "D:\\go";
-            Winforms.DialogResult result = dialog.ShowDialog();
-
-
-            if (result == Winforms.DialogResult.OK)
-            {
-                string folderPath = dialog.SelectedPath;
-                tbFolderPath.Text = folderPath;
-            }
-            else
-            {
-                tbFolderPath.Text = "No folder selected.";
-            }
+            lvEntries.Items.Clear();
         }
     }
 }

@@ -23,6 +23,21 @@
                 <ColumnDefinition Width="20*"/>
             </Grid.ColumnDefinitions>
 
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBox Name="txtInput" 
+                         VerticalContentAlignment="Center" 
+                         Width="150" Height="20" 
+                         FontSize="16" 
+                         Text="{Binding BoundText, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"/>
+                <Button Name="btnSet" Grid.Row="1" Width="150" Height="30" Content="Set" Click="btnSet_Click"/>
+                <TextBlock Grid.Row="2" FontSize="16" Text="{Binding BoundText}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -30,10 +45,28 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <userControls:ClearableTextBox Grid.Column="1" Width="250" Height="40" HorizontalAlignment="Left" Placeholder="Name"/>
-                <userControls:ClearableTextBox Grid.Column="1" Grid.Row="1" Width="250" Height="40" HorizontalAlignment="Left" Placeholder="Email"/>
-                <userControls:ClearableTextBox Grid.Column="1" Grid.Row="2" Width="250" Height="40" HorizontalAlignment="Left" Placeholder="Phone"/>
+                <userControls:ClearableTextBox Placeholder="Name" Width="250" Height="40" HorizontalAlignment="Left"/> 
+                <userControls:ClearableTextBox Grid.Row="1" Placeholder="Email" Width="250" Height="40" HorizontalAlignment="Left"/> 
+                <userControls:ClearableTextBox Grid.Row="2" Placeholder="Phone" Width="250" Height="40" HorizontalAlignment="Left"/> 
             </Grid>
+
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Button Name="btnFire" Width="50" Height="25" Content="Fire" Click="btnFire_Click"/>
+                <TextBlock Name="tbInfo" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="16"/>
+
+                <Button Grid.Row="1" Name="btnOpenFile" Content="Open File" Width="60" Height="30" Click="btnOpenFile_Click"/>
+                <TextBlock Grid.Row="1" Name="tbFilePath" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="12"/>
+
+                <Button Grid.Row="2" Name="btnOpenFolder" Content="Open Folder" Width="80" Height="30" Click="btnOpenFolder_Click"/>
+                <TextBlock Grid.Row="2" Name="tbFolderPath" FontSize="12" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+            </Grid>
+            
         </Grid>
 
     </Grid>

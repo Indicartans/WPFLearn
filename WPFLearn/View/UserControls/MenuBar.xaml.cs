@@ -2,7 +2,7 @@
 
 namespace WPFLearn.View.UserControls
 {
-    public partial class MenuBar : UserControl
+    public partial class MenuBar : System.Windows.Controls.UserControl
 
     {
         public MenuBar()

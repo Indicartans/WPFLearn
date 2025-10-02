@@ -5,20 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFLearn"
         xmlns:userControls="clr-namespace:WPFLearn.View.UserControls"
-        mc:Ignorable="d"
+        mc:Ignorable="d" WindowStyle="None"
         Title="MainWindow" Height="350" Width="300">
     <Grid>
-        <ScrollViewer VerticalScrollBarVisibility="Hidden">
-            <StackPanel>
-                <TextBox Width="200" Height="30" Margin="10"/>
-                <TextBox Width="200" Height="30" Margin="10"/>
-                <TextBox Width="200" Height="30" Margin="10"/>
-                <TextBox Width="200" Height="30" Margin="10"/>
-                <TextBox Width="200" Height="30" Margin="10"/>
-                <TextBox Width="200" Height="30" Margin="10"/>
-                <TextBox Width="200" Height="30" Margin="10"/>
-                <TextBox Width="200" Height="30" Margin="10"/>
-            </StackPanel>
-        </ScrollViewer>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="btnMinimize" Width="40" Height="40" Content="-"
+                    Background="Transparent" BorderBrush="Transparent" Click="btnMinimize_Click"></Button>
+            <Button x:Name="btnMaximize" Width="40" Height="40" Content="[]"
+                    Background="Transparent" BorderBrush="Transparent" Click="btnMaximize_Click"></Button>
+            <Button x:Name="btnClose" Width="40" Height="40" Content="X"
+                    Background="Transparent" BorderBrush="Transparent" Click="btnClose_Click"></Button>
+        </StackPanel>
     </Grid>
 </Window>

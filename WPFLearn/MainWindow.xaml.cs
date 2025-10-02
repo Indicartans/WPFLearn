@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.ObjectModel;
 using System.Windows;
+using WPFLearn.View;
 
 namespace WPFLearn
 {
@@ -11,26 +12,23 @@ namespace WPFLearn
             InitializeComponent();
         }
 
-        private void btnMinimize_Click(object sender, RoutedEventArgs e)
+        private void btnNormal_Click(object sender, RoutedEventArgs e)
         {
-            WindowState = WindowState.Minimized;
+            NormalWindow normalWindow = new NormalWindow();
+            normalWindow.Show();
         }
 
-        private void btnMaximize_Click(object sender, RoutedEventArgs e)
+        private void btnModal_Click(object sender, RoutedEventArgs e)
         {
-            if(WindowState == WindowState.Maximized)
-            {
-                WindowState = WindowState.Normal;
-            }
-            else
-            {
-                WindowState = WindowState.Maximized;
-            }
-        }
+            ModalWindow modalWindow = new ModalWindow(this);
+            Opacity = 0.5;
+            modalWindow.ShowDialog();
+            Opacity = 1;
 
-        private void btnClose_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
+            if (modalWindow.Success)
+            {
+                txtInput.Text = modalWindow.Input;
+            }
         }
     }
 }

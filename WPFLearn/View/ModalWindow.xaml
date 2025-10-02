@@ -1,0 +1,20 @@
+﻿<Window x:Class="WPFLearn.View.ModalWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFLearn.View"
+        mc:Ignorable="d" WindowStyle="None" WindowStartupLocation="CenterOwner"
+        Title="ModalWindow" Height="150" Width="250">
+    <Grid>
+        <StackPanel VerticalAlignment="Center">
+            <TextBox Name="txtInput" Width="150" Height="30" TextChanged="txtInput_TextChanged"></TextBox>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Name="btnOk" Content="OK" Width="70" Height="30" Margin="5" Click="btnOk_Click"
+                        IsEnabled="False"/>
+                <Button x:Name="btnCancel" Content="Cancel" Width="70" Height="30" Margin="5" Click="btnCancel_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

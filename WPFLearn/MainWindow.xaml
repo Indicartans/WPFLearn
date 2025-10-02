@@ -4,15 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFLearn"
-        xmlns:userControls="clr-namespace:WPFLearn.View.UserControls"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="300">
     <Grid>
         <StackPanel VerticalAlignment="Center">
-            <Button Name="btnNormal" Content="Normal" Width="100" Height="30" Margin="5" Click="btnNormal_Click"/>
-            <Button Name="btnModal" Content="Modal" Width="100" Height="30" Margin="5" Click="btnModal_Click"/>
+            <Button Name="btnNormal" Content="Normal"/>
+            <Button Name="btnModal" Content="Modal" Style="{StaticResource ConfirmationButton}"/>
 
-            <TextBox Name="txtInput" Width="200" Height="30" Margin="5" VerticalContentAlignment="Center"/>
+            <TextBox Name="txtInput"/>
         </StackPanel>
     </Grid>
 </Window>

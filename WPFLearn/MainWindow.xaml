@@ -23,6 +23,6 @@
         <Button Grid.Column="1" Name="btnDelete" Width="50" Height="40" Content="Delete" Click="btnDelete_Click" Margin="60,0,0,0" HorizontalAlignment="Left"/>
         <Button Grid.Column="1" Name="btnClear" Width="50" Height="40" Content="Clear" Click="btnClear_Click" Margin="120,0,0,0" HorizontalAlignment="Left"/>
 
-        <ListView Name="lvEntries" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <ListView Name="lvEntries" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Entries}"/>
     </Grid>
 </Window>

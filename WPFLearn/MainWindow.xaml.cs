@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.ObjectModel;
 using System.Windows;
 
 namespace WPFLearn
@@ -7,38 +8,35 @@ namespace WPFLearn
     {
         public MainWindow()
         {
+            DataContext = this;
+            entries = new ObservableCollection<string>();
             InitializeComponent();
-            lvEntries.Items.Add("Item 1");
-            lvEntries.Items.Add("Item 2");
-            lvEntries.Items.Add("Item 3");
         }
+
+        private ObservableCollection<string> entries;
+
+        public ObservableCollection<string> Entries
+        {
+            get { return entries; }
+            set { entries = value; }
+        }
+
 
         private void btnAddItem_Click(object sender, RoutedEventArgs e)
         {
-            lvEntries.Items.Add(lvInput.Text);
+            Entries.Add(lvInput.Text);
             lvInput.Clear();
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            //int index = lvEntries.SelectedIndex;
-            //object item = lvEntries.SelectedItem;
-            var items = lvEntries.SelectedItems;
-
-            var result = System.Windows.MessageBox.Show($"Are you sure to delete '{items.Count}' item(s)?", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if( result == MessageBoxResult.Yes)
-            {
-                var itemsList = new ArrayList(items);
-                foreach(var item in itemsList)
-                {
-                    lvEntries.Items.Remove(item);
-                }
-            }
+            string selectedItem = (string)lvEntries.SelectedItem;
+            Entries.Remove(selectedItem);
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
-            lvEntries.Items.Clear();
+            Entries.Clear();
         }
     }
 }

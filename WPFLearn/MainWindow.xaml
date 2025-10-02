@@ -6,24 +6,19 @@
         xmlns:local="clr-namespace:WPFLearn"
         xmlns:userControls="clr-namespace:WPFLearn.View.UserControls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="400">
+        Title="MainWindow" Height="350" Width="300">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="auto"/>
-        </Grid.ColumnDefinitions>
-
-        <StackPanel Background="LightBlue">
-            <TextBlock Text="Name"/>
-            <Expander>
-                <TextBlock Text="Phone"/>
-            </Expander>
-
-            <Button x:Name="btnDetails" Content="Details" Width="120" Click="btnDetails_Click"/>
-        </StackPanel>
-
-        <Expander x:Name="expanderDetails" Grid.Column="1" Background="LightCoral" BorderThickness="0" ExpandDirection="Left">
-            <Rectangle Grid.Column="1" Fill="LightCoral" Width="100"/>
-        </Expander>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+            <StackPanel>
+                <TextBox Width="200" Height="30" Margin="10"/>
+                <TextBox Width="200" Height="30" Margin="10"/>
+                <TextBox Width="200" Height="30" Margin="10"/>
+                <TextBox Width="200" Height="30" Margin="10"/>
+                <TextBox Width="200" Height="30" Margin="10"/>
+                <TextBox Width="200" Height="30" Margin="10"/>
+                <TextBox Width="200" Height="30" Margin="10"/>
+                <TextBox Width="200" Height="30" Margin="10"/>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Window>
